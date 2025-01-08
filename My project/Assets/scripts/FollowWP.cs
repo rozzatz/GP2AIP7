@@ -10,6 +10,7 @@ public class FollowWP : MonoBehaviour
 
 
     public float speed = 10.0f;
+    public float rotSpeed = 10.0f;
     void Start()
     {
         
@@ -24,7 +25,12 @@ public class FollowWP : MonoBehaviour
         if (CurrentWP >= waypoints.Length)
             { CurrentWP = 0; }
 
-        this.transform.LookAt (waypoints[CurrentWP].transform);
+        //this.transform.LookAt (waypoints[CurrentWP].transform);
+
+        Quaternion lookatWP = Quaternion.LookRotation(waypoints[CurrentWP].transform.position - this.transform.position);
+
+        this.transform.rotation = Quaternion.Slerp(transform.rotation, lookatWP,rotSpeed * Time.deltaTime);
+
         this.transform.Translate(0, 0, speed * Time.deltaTime);
     }
 }
