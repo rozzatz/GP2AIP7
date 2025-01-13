@@ -11,11 +11,14 @@ public class FollowWP : MonoBehaviour
 
     public float speed = 10.0f;
     public float rotSpeed = 10.0f;
+
+    GameObject tracker;
     void Start()
     {
-        
-    }
 
+
+
+    }
     // Update is called once per frame
     void Update()
     {
